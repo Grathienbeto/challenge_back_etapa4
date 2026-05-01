@@ -1,4 +1,4 @@
-from database.db import Base
+from app.database.db import Base
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -12,6 +12,5 @@ class Character(Base):
     hair_color = Column(String(100), nullable= False)
     skin_color = Column(String(100), nullable= False)
     eye_color_id = Column(Integer, ForeignKey('eye_colors.id'), nullable= False)
-    
     
     eye_color = relationship('EyeColor')
