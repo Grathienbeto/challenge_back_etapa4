@@ -1,16 +1,16 @@
-from app.database.db import engine, get_db, Base
 from fastapi import FastAPI, Depends
 
-from typing import Annotated
-from sqlalchemy.orm import Session
+# from app.routes.character_routes import router as character_routes
+from app.models.character_model import Character
+from app.models.eye_color_model import EyeColor
+import app.models
+from app.database.db import engine, Base
 
 app = FastAPI()
+Base.metadata.create_all(bind= engine)
 
 
-Base.metadata.create_all(bind = engine)
-
-
-db_dependency = Annotated[Session, Depends(get_db)]
+# app.include_router(character_routes, prefix='/characters', tags=['Characters'])
 
 
 @app.get('/')
