@@ -8,6 +8,7 @@ class CharacterRequest(BaseModel):
     mass: int = Field(gt=0, lt=2000)
     hair_color: str = Field(min_length=2, max_length=50)
     skin_color: str = Field(min_length=2, max_length=50)
+    eye_color: int = Field(gt=0)
     
     model_config = {
         'json_schema_extra': {
