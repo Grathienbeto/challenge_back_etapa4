@@ -1,12 +1,11 @@
-from fastapi import Depends
-from typing import Annotated
-from sqlalchemy.orm import Session
-from app.database.db import get_db
+from app.database.db import db_dependency
 from app.models.character_model import Character
+from app.models.eye_color_model import EyeColor
+from sqlalchemy.orm import Session
 
 
-db_dependency = Annotated[Session, Depends(get_db)]   
-
-
-def get_all_characters(db: db_dependency = db_dependency):
+def get_all_characters(db: Session):
     return db.query(Character).all()
+
+def get_all_eye_colors(db: Session):
+    return db.query(EyeColor).all()

@@ -32,4 +32,3 @@ class CharacterResponse(BaseModel):
     name: str = Field(min_length=2)
     height: int = Field(gt=0, lt=500)
     mass: int = Field(gt=0, lt=2000)
-    birth_year: int = Field(gt=0, lt=9999)
