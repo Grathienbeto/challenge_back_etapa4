@@ -8,6 +8,29 @@ class CharacterRequest(BaseModel):
     mass: int = Field(gt=0, lt=2000)
     hair_color: str = Field(min_length=2, max_length=50)
     skin_color: str = Field(min_length=2, max_length=50)
+    eye_color_id: int
+    
+    model_config = {
+    'json_schema_extra': {
+      'example': {
+        'name' : 'Kit Fisto',
+        'height' : 196,
+        'mass' : 87,
+        'hair_color' : 'none',
+        'skin_color' : 'green',
+        'eye_color_id' : 3
+      } 
+    }
+  }
+    
+
+class CharacterResponseComplete(BaseModel):
+  
+    name: str = Field(min_length=2, max_length=50)
+    height: int = Field(gt=0, lt=500)
+    mass: int = Field(gt=0, lt=2000)
+    hair_color: str = Field(min_length=2, max_length=50)
+    skin_color: str = Field(min_length=2, max_length=50)
     eye_color: str
     
     class Config:
@@ -19,7 +42,6 @@ class CharacterRequest(BaseModel):
         if hasattr(value, 'color'):
             return value.color
         return value
-    
     
     
 class CharacterResponse(BaseModel):
