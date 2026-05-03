@@ -32,4 +32,12 @@ async def create_character(db: db_dependency,
                            character_request: CharacterRequest):
     character_services.create_character(db, character_request)
 
+
+
+@router.delete('/delete/{id}', status_code=status.HTTP_200_OK)
+async def delete_character(db: db_dependency,
+                           id: int = Path(gt=0)):
     
+    deleted_character = character_services.delete_character(db, id)
+    if not deleted_character:
+        HTTPException(status_code=404, detail='Character Id not found')

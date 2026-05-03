@@ -31,7 +31,15 @@ def create_character(db: Session, character: CharacterRequest):
     db.add(new_character)
     db.commit()
     return new_character
+
+
+def delete_character(db: Session, id: int):
+    character = db.query(Character).filter(Character.id == id).first()
+    if not character:
+        return None
     
+    db.delete(character)
+    db.commit()
     
     
 
