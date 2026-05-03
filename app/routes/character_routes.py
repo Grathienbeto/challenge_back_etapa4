@@ -30,6 +30,6 @@ async def get_character_by_name(db: db_dependency,
 @router.post('/add', status_code=status.HTTP_201_CREATED)
 async def create_character(db: db_dependency,
                            character_request: CharacterRequest):
-    new_character = character_services.create_character(db, character_request)
-    return new_character
+    character_services.create_character(db, character_request)
+
     
